@@ -135,6 +135,8 @@ Props): JSX.Element {
     updateFilter(event.target.value, null);
   }, [setSearchText, updateFilter]);
 
+  const goToLastPage = useCallback(() => gotoPage(pageCount - 1), [pageCount]);
+
   return (
     <>
       {!hasData && <Notice>No results found</Notice>}
@@ -259,7 +261,7 @@ Props): JSX.Element {
           </button>{' '}
           <button
             className="-next"
-            onClick={useCallback(() => gotoPage(pageCount - 1), [pageCount])}
+            onClick={goToLastPage}
             disabled={!canNextPage}
           >
             {'>>'}
